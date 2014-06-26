@@ -12,6 +12,7 @@
 		497085B8195CBBCE001B88B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 497085B6195CBBCE001B88B4 /* Main.storyboard */; };
 		497085BA195CBBCE001B88B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497085B9195CBBCE001B88B4 /* Images.xcassets */; };
 		497085C6195CBBCE001B88B4 /* ZipGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085C5195CBBCE001B88B4 /* ZipGetTests.swift */; };
+		497085D0195CC288001B88B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497085CF195CC288001B88B4 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		497085BF195CBBCE001B88B4 /* ZipGetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZipGetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		497085C4195CBBCE001B88B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497085C5195CBBCE001B88B4 /* ZipGetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipGetTests.swift; sourceTree = "<group>"; };
+		497085CF195CC288001B88B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497085D0195CC288001B88B4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +60,7 @@
 		497085A4195CBBCE001B88B4 = {
 			isa = PBXGroup;
 			children = (
+				497085CF195CC288001B88B4 /* MapKit.framework */,
 				497085AF195CBBCE001B88B4 /* ZipGet */,
 				497085C2195CBBCE001B88B4 /* ZipGetTests */,
 				497085AE195CBBCE001B88B4 /* Products */,
@@ -157,6 +161,11 @@
 				TargetAttributes = {
 					497085AC195CBBCE001B88B4 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					497085BE195CBBCE001B88B4 = {
 						CreatedOnToolsVersion = 6.0;
