@@ -19,19 +19,34 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LG5-8k-q5w">
                                 <rect key="frame" x="20" y="26" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Gpw-C4-1lp"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njj-SF-zJE">
-                                <rect key="frame" x="20" y="64" width="280" height="47"/>
+                                <rect key="frame" x="20" y="64" width="280" height="68"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="Find me!"/>
+                                <connections>
+                                    <action selector="findMe" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wki-sD-Byt"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="48s-gK-Skr">
                                 <rect key="frame" x="0.0" y="283" width="320" height="285"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="nkt-PP-JPH"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12345" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcz-WX-CFo">
-                                <rect key="frame" x="20" y="140" width="280" height="96"/>
+                                <rect key="frame" x="20" y="140" width="280" height="92"/>
                                 <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="90"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8n-bZ-g47">
+                                <rect key="frame" x="20" y="240" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -40,6 +55,13 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="findBtn" destination="Njj-SF-zJE" id="gNt-hT-DAU"/>
+                        <outlet property="mapView" destination="48s-gK-Skr" id="183-9b-MfD"/>
+                        <outlet property="message" destination="u8n-bZ-g47" id="x6j-pu-T2P"/>
+                        <outlet property="searchField" destination="LG5-8k-q5w" id="Q4J-wG-dQL"/>
+                        <outlet property="zipcode" destination="Mcz-WX-CFo" id="Lbz-6X-Cuw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

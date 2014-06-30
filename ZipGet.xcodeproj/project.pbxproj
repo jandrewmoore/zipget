@@ -13,6 +13,8 @@
 		497085BA195CBBCE001B88B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497085B9195CBBCE001B88B4 /* Images.xcassets */; };
 		497085C6195CBBCE001B88B4 /* ZipGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085C5195CBBCE001B88B4 /* ZipGetTests.swift */; };
 		497085D0195CC288001B88B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497085CF195CC288001B88B4 /* MapKit.framework */; };
+		497085D2195CDF53001B88B4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497085D1195CDF53001B88B4 /* CoreLocation.framework */; };
+		497085D4195DB631001B88B4 /* ZipCodeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085D3195DB631001B88B4 /* ZipCodeFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		497085C4195CBBCE001B88B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497085C5195CBBCE001B88B4 /* ZipGetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipGetTests.swift; sourceTree = "<group>"; };
 		497085CF195CC288001B88B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		497085D1195CDF53001B88B4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		497085D3195DB631001B88B4 /* ZipCodeFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497085D2195CDF53001B88B4 /* CoreLocation.framework in Frameworks */,
 				497085D0195CC288001B88B4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +65,7 @@
 		497085A4195CBBCE001B88B4 = {
 			isa = PBXGroup;
 			children = (
+				497085D1195CDF53001B88B4 /* CoreLocation.framework */,
 				497085CF195CC288001B88B4 /* MapKit.framework */,
 				497085AF195CBBCE001B88B4 /* ZipGet */,
 				497085C2195CBBCE001B88B4 /* ZipGetTests */,
@@ -84,6 +90,7 @@
 				497085B6195CBBCE001B88B4 /* Main.storyboard */,
 				497085B9195CBBCE001B88B4 /* Images.xcassets */,
 				497085B0195CBBCE001B88B4 /* Supporting Files */,
+				497085D3195DB631001B88B4 /* ZipCodeFinder.swift */,
 			);
 			path = ZipGet;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497085D4195DB631001B88B4 /* ZipCodeFinder.swift in Sources */,
 				497085B5195CBBCE001B88B4 /* ViewController.swift in Sources */,
 				497085B3195CBBCE001B88B4 /* AppDelegate.swift in Sources */,
 			);
@@ -334,6 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ZipGet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -345,6 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ZipGet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -405,6 +415,7 @@
 				497085CB195CBBCE001B88B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		497085CC195CBBCE001B88B4 /* Build configuration list for PBXNativeTarget "ZipGetTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +424,7 @@
 				497085CE195CBBCE001B88B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
