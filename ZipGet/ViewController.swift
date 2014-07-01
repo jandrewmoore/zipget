@@ -57,8 +57,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         if let coords = latestLocation?.coordinate {
             mapView.setRegion(MKCoordinateRegionMake(coords, MKCoordinateSpanMake(0.5, 0.5)), animated: true)
         } else {
-            let newZip = zipCodeFinder.findZipCode(forCoordinate: mapView.centerCoordinate)
-            setNewZipCode(newZip)
+            var newZip: String
+            zipCodeFinder.findZipCode(forCoordinate: mapView.centerCoordinate, onSuccess: setNewZipCode)
         }
     }
     
@@ -84,6 +84,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     }
     
     func textFieldDidEndEditing(textField: UITextField!) {
-    
+        // Do something with the text.
     }
 }

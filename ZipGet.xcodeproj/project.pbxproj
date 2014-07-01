@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1635D20E75344B518E78D0EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3172D73F9D154AB381F6E59F /* libPods.a */; };
 		497085B3195CBBCE001B88B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085B2195CBBCE001B88B4 /* AppDelegate.swift */; };
 		497085B5195CBBCE001B88B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085B4195CBBCE001B88B4 /* ViewController.swift */; };
 		497085B8195CBBCE001B88B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 497085B6195CBBCE001B88B4 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3172D73F9D154AB381F6E59F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		497085AD195CBBCE001B88B4 /* ZipGet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZipGet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		497085B1195CBBCE001B88B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497085B2195CBBCE001B88B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		497085CF195CC288001B88B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		497085D1195CDF53001B88B4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		497085D3195DB631001B88B4 /* ZipCodeFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeFinder.swift; sourceTree = "<group>"; };
+		49E5968E19622B0200E1757F /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge.h; sourceTree = "<group>"; };
+		9ADEB5F81AB942D8AD62C4DD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			files = (
 				497085D2195CDF53001B88B4 /* CoreLocation.framework in Frameworks */,
 				497085D0195CC288001B88B4 /* MapKit.framework in Frameworks */,
+				1635D20E75344B518E78D0EB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41FF3555A0194805A6B9BCA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3172D73F9D154AB381F6E59F /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		497085A4195CBBCE001B88B4 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +83,8 @@
 				497085AF195CBBCE001B88B4 /* ZipGet */,
 				497085C2195CBBCE001B88B4 /* ZipGetTests */,
 				497085AE195CBBCE001B88B4 /* Products */,
+				9ADEB5F81AB942D8AD62C4DD /* Pods.xcconfig */,
+				41FF3555A0194805A6B9BCA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +100,7 @@
 		497085AF195CBBCE001B88B4 /* ZipGet */ = {
 			isa = PBXGroup;
 			children = (
+				49E5968E19622B0200E1757F /* bridge.h */,
 				497085B2195CBBCE001B88B4 /* AppDelegate.swift */,
 				497085B4195CBBCE001B88B4 /* ViewController.swift */,
 				497085B6195CBBCE001B88B4 /* Main.storyboard */,
@@ -127,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 497085C9195CBBCE001B88B4 /* Build configuration list for PBXNativeTarget "ZipGet" */;
 			buildPhases = (
+				529D9227D0D949B6B9C03E42 /* Check Pods Manifest.lock */,
 				497085A9195CBBCE001B88B4 /* Sources */,
 				497085AA195CBBCE001B88B4 /* Frameworks */,
 				497085AB195CBBCE001B88B4 /* Resources */,
+				52FA162EB915446D93A9A378 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +235,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		529D9227D0D949B6B9C03E42 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		52FA162EB915446D93A9A378 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		497085A9195CBBCE001B88B4 /* Sources */ = {
@@ -338,25 +389,31 @@
 		};
 		497085CA195CBBCE001B88B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ADEB5F81AB942D8AD62C4DD /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ZipGet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
 			};
 			name = Debug;
 		};
 		497085CB195CBBCE001B88B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ADEB5F81AB942D8AD62C4DD /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ZipGet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = bridge.h;
 			};
 			name = Release;
 		};
