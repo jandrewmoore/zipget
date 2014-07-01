@@ -14,10 +14,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
                             
     @IBOutlet var searchField: UITextField
     @IBOutlet var findBtn: UIButton
-    @IBOutlet var zipcode: UILabel
+    @IBOutlet var zipCode: UILabel
     @IBOutlet var mapView: MKMapView
     @IBOutlet var message: UILabel
-    
+        
     let zipCodeFinder = ZipCodeFinder()
     
     var locationManager: CLLocationManager
@@ -44,6 +44,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        zipCode.text = zipCodeFinder.getFirstZipCode()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +66,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     
     func setNewZipCode(newZipCode: String) {
         // Plan: animate text as it increments/decrements to new zip
-        zipcode.text = newZipCode
+        if newZipCode == zipCode.text {
+            animateMessage("You're in the same zip code!")
+        } else {
+            zipCode.text = newZipCode
+            clearMessage()
+        }
+    }
+    
+    func animateMessage(newMessage: String) {
+        message.alpha = 0.0
+        message.text = newMessage
+        
+        UIView.beginAnimations(nil, context: nil)
+        UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
+        UIView.setAnimationDuration(2.0)
+        
+        message.alpha = 1.0
+        
+        UIView.commitAnimations()
+    }
+    
+    func clearMessage() {
+        message.text = ""
     }
     
     // Location manager delegate methods

@@ -11,15 +11,21 @@ import MapKit
 
 class ZipCodeFinder {
     let username = "jamoore"
+    
+    let myZipCodes = ["96701", "76522", "42303", "47803", "47807", "46032", "46220"]
     let manager: AFHTTPRequestOperationManager
     
     init() {
         self.manager = AFHTTPRequestOperationManager()
     }
     
+    func getFirstZipCode() -> String {
+        return myZipCodes[Int(arc4random_uniform(UInt32(myZipCodes.count - 1)))]
+    }
+    
     func findZipCode(forCoordinate coord: CLLocationCoordinate2D, onSuccess: (String) -> Void) {
         let url = "http://api.geonames.org/findNearbyPostalCodesJSON" +
-            "?lat=\(coord.latitude)&lng=\(coord.longitude)&username=\(username)"
+            "?lat=\(coord.latitude)&lng=\(coord.longitude)&username=\(username)&maxRows=1"
         
         manager.GET(url,
             parameters: nil,
@@ -37,7 +43,5 @@ class ZipCodeFinder {
                 in
                 println("Error: \(error.localizedDescription)")
             })
-        
-//        let fake = Int(arc4random_uniform(90000)) + 10000
     }
 }
