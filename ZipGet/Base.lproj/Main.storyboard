@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -26,9 +27,9 @@
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <tabBarItem title="Explore" id="ZZm-3R-dPH"/>
-                                    <tabBarItem tag="1" systemItem="search" id="5T4-bg-o7D"/>
-                                    <tabBarItem tag="2" title="Find me" id="O9q-ph-GJk"/>
+                                    <tabBarItem title="Explore" image="glyphicons_431_shoe_steps" id="ZZm-3R-dPH"/>
+                                    <tabBarItem tag="1" title="Search" image="glyphicons_027_search" id="5T4-bg-o7D"/>
+                                    <tabBarItem tag="2" title="Find me" image="glyphicons_233_direction" id="O9q-ph-GJk"/>
                                 </items>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="d52-as-01Q"/>
@@ -78,4 +79,9 @@
             <point key="canvasLocation" x="12" y="114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="glyphicons_027_search" width="24" height="24"/>
+        <image name="glyphicons_233_direction" width="25" height="26"/>
+        <image name="glyphicons_431_shoe_steps" width="16" height="24"/>
+    </resources>
 </document>
