@@ -10,10 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, MKMapViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, MKMapViewDelegate, UITabBarDelegate {
                             
     @IBOutlet var searchField: UITextField
-    @IBOutlet var findBtn: UIButton
     @IBOutlet var zipCode: UILabel
     @IBOutlet var mapView: MKMapView
     @IBOutlet var message: UILabel
@@ -54,16 +53,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         locationManager.startMonitoringSignificantLocationChanges()
         
         changeMode(Mode.Explore)
+        
+        registerForKeyboardNotifications()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func findMe() {
-        searchField.endEditing(true);
-        
+    func findMe() {
         if let coords = latestLocation?.coordinate {
            zipCodeFinder.findZipCode(forCoordinate: coords, onSuccess: setNewZipCode, onError: displayError)
         }
@@ -78,15 +77,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         case .Search:
             searchField.hidden = false
             exploreHint.hidden = true
-            findBtn.hidden = true
         case .Explore:
             searchField.hidden = true
             exploreHint.hidden = false
-            findBtn.hidden = true
         default:
             searchField.hidden = true
             exploreHint.hidden = true
-            findBtn.hidden = false
         }
         
         mode = newMode
@@ -131,19 +127,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     func animateMessage(newMessage: String) {
         message.text = newMessage
         PRTween.tween(message, property: "alpha", from: 0.0, to: 1.0, duration: 2.0)
-//        message.alpha = 0.0
-//        
-//        UIView.beginAnimations(nil, context: nil)
-//        UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
-//        UIView.setAnimationDuration(2.0)
-//        
-//        message.alpha = 1.0
-//        
-//        UIView.commitAnimations()
     }
     
     func clearMessage() {
         message.text = ""
+    }
+    
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let info = notification.userInfo
+        let kbSize = info[UIKeyboardFrameBeginUserInfoKey].CGRectValue()
+        let oldFrame = searchField.frame
+        let newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y - kbSize.height + 49, oldFrame.width, oldFrame.height)
+        
+        let period = PRTweenPeriod.periodWithStartValue(oldFrame.origin.y, endValue: newFrame.origin.y, duration: 0.25) as PRTweenPeriod
+        
+        PRTween.sharedInstance().addTweenPeriod(period, updateBlock: { (p: PRTweenPeriod!) in
+                self.searchField.frame.origin.y = p.tweenedValue
+            }, completionBlock: nil)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let period = PRTweenPeriod.periodWithStartValue(searchField.frame.origin.y, endValue: 478, duration: 0.25) as PRTweenPeriod
+        
+        PRTween.sharedInstance().addTweenPeriod(period, updateBlock: { (p: PRTweenPeriod!) in
+            self.searchField.frame.origin.y = p.tweenedValue
+            }, completionBlock: nil)
     }
     
     // Location manager delegate methods
@@ -181,6 +195,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         if mode == .Explore {
             zipCodeFinder.findZipCode(forCoordinate: mapView.centerCoordinate,
                 onSuccess: setNewZipCode, onError: displayError)
+        }
+    }
+    
+    // Tab bar delegate methods
+    func tabBar(tabBar: UITabBar!, didSelectItem item: UITabBarItem!) {
+        changeMode(Mode.fromRaw(item.tag)!)
+        
+        if item.tag == Mode.Locate.toRaw() {
+            findMe()
         }
     }
 }
