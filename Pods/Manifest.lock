@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - PRTween (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
+  - PRTween (~> 0.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  PRTween: 27ec4d9d84f9e3be56717447a694842f0ba9640b
 
 COCOAPODS: 0.33.1

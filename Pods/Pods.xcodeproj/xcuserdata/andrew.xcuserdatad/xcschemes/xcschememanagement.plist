@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PRTween.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B4578F600E4B4D64A537AB09</key>
+		<key>45FA472843844EE4A0B6FF73</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE4C971F79CD4F66BD63D332</key>
+		<key>67F110884822482984F90AC8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6864E64E6C06407B83D866BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
