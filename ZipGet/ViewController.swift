@@ -43,34 +43,40 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         clearMessage()
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.distanceFilter = kCLDistanceFilterNone
-
-        locationManager.startMonitoringSignificantLocationChanges()
         
         tabBar.selectedItem = tabBar.items[0] as UITabBarItem
         changeMode(Mode.Explore)
         
         registerForKeyboardNotifications()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appWillResignActive:", name: UIApplicationWillResignActiveNotification, object: nil)
+
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func appDidBecomeActive(notification: NSNotification) {
+        locationManager.startMonitoringSignificantLocationChanges()
     }
-
+    
+    func appWillResignActive(notification: NSNotification) {
+        locationManager.stopMonitoringSignificantLocationChanges()
+    }
+    
+    
     func findMe() {
         if let coords = latestLocation?.coordinate {
            zipCodeFinder.findZipCode(forCoordinate: coords, onSuccess: setNewZipCode, onError: displayError)
         }
     }
     
-    @IBAction func changeMode(sender: UISegmentedControl) {
+    func changeMode(sender: UISegmentedControl) {
         changeMode(Mode.fromRaw(sender.selectedSegmentIndex)!)
     }
     
@@ -92,7 +98,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     }
     
     func setNewZipCode(newZipCode: String) {
-        // Plan: animate text as it increments/decrements to new zip
         if newZipCode == zipCode.text {
             animateMessage("You're in the same zip code!")
         } else {
