@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     @IBOutlet var mapView: MKMapView
     @IBOutlet var message: UILabel
     @IBOutlet var exploreHint: UILabel
+    @IBOutlet var tabBar: UITabBar
     
     enum Mode: Int {
         case Explore = 0
@@ -52,6 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
 
         locationManager.startMonitoringSignificantLocationChanges()
         
+        tabBar.selectedItem = tabBar.items[0] as UITabBarItem
         changeMode(Mode.Explore)
         
         registerForKeyboardNotifications()
@@ -86,6 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         }
         
         mode = newMode
+        tabBar.selectedItem = tabBar.items[mode.toRaw()] as UITabBarItem
     }
     
     func setNewZipCode(newZipCode: String) {
@@ -195,6 +198,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         if mode == .Explore {
             zipCodeFinder.findZipCode(forCoordinate: mapView.centerCoordinate,
                 onSuccess: setNewZipCode, onError: displayError)
+        }
+        
+        if !animated && mode != .Explore {
+            changeMode(.Explore)
         }
     }
     
