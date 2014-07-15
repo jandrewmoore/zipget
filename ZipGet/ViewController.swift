@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, MKMapViewDelegate, UITabBarDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, MKMapViewDelegate, UITabBarDelegate, UIAlertViewDelegate {
                             
     @IBOutlet var searchField: UITextField
     @IBOutlet var zipCode: UILabel
@@ -25,7 +25,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         case Locate = 2
     }
         
-    let zipCodeFinder = ZipCodeFinder()
+    var zipCodeFinder: ZipCodeFinder?
     
     var locationManager: CLLocationManager
     var latestLocation: CLLocation?
@@ -58,7 +58,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "appDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "appWillResignActive:", name: UIApplicationWillResignActiveNotification, object: nil)
-
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDefaultsDidChange:", name: NSUserDefaultsDidChangeNotification, object: nil)
     }
     
     func appDidBecomeActive(notification: NSNotification) {
@@ -69,10 +70,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         locationManager.stopMonitoringSignificantLocationChanges()
     }
     
+    func userDefaultsDidChange(notification: NSNotification) {
+        let defaults = notification.object as NSUserDefaults
+        let username = defaults.stringForKey("username_preference")
+        
+        if username.isEmpty {
+            zipCodeFinder = nil
+        } else {
+            zipCodeFinder = ZipCodeFinder(username)
+        }
+    }
     
     func findMe() {
         if let coords = latestLocation?.coordinate {
-           zipCodeFinder.findZipCode(forCoordinate: coords, onSuccess: setNewZipCode, onError: displayError)
+            if !zipCodeFinder {
+                setUpZipCodeFinder()
+            }
+            zipCodeFinder?.findZipCode(forCoordinate: coords, onSuccess: setNewZipCode, onError: displayError)
         }
     }
     
@@ -109,7 +123,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
                 
                 PRTween.sharedInstance().addTweenPeriod(period, updateBlock: { (p: PRTweenPeriod!) in
                         self.zipCode.text = "\(Int(p.tweenedValue))"
-                    }, completionBlock: nil)
+                    }, completionBlock: { self.zipCode.text = newZipCode })
             } else {
                 zipCode.text = newZipCode
             }
@@ -117,7 +131,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             clearMessage()
         }
         
-        if let coords = zipCodeFinder.latestCoordinates {
+        if let coords = zipCodeFinder?.latestCoordinates {
             if mode != .Explore {
                 mapView.setRegion(MKCoordinateRegionMake(coords, MKCoordinateSpanMake(0.05, 0.05)), animated: true)
             }
@@ -168,6 +182,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             }, completionBlock: nil)
     }
     
+    func setUpZipCodeFinder() {
+        let newUsername = NSUserDefaults.standardUserDefaults().stringForKey("username_preference")
+        if newUsername.isEmpty {
+            let usernameAlert = UIAlertView()
+            usernameAlert.title = "Who are you?"
+            usernameAlert.message = "The GeoNames service ZipGet uses requires a username. Get one at geonames.org."
+            usernameAlert.delegate = self
+            usernameAlert.addButtonWithTitle("Cancel")
+            usernameAlert.addButtonWithTitle("OK")
+            usernameAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+            
+            usernameAlert.show()
+        } else {
+            zipCodeFinder = ZipCodeFinder(newUsername)
+        }
+    }
+    
     // Location manager delegate methods
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]) {
         let possibleNew = locations[locations.endIndex - 1] as CLLocation
@@ -194,14 +225,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     
     func textFieldDidEndEditing(textField: UITextField!) {
         if !textField.text.isEmpty {
-            zipCodeFinder.findZipCode(forCityName: textField.text, onSuccess: setNewZipCode, onError: displayError)
+            if !zipCodeFinder {
+                setUpZipCodeFinder()
+            }
+            zipCodeFinder?.findZipCode(forCityName: textField.text, onSuccess: setNewZipCode, onError: displayError)
         }
     }
     
     // Map view delegate methods
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
         if mode == .Explore {
-            zipCodeFinder.findZipCode(forCoordinate: mapView.centerCoordinate,
+            if !zipCodeFinder {
+                setUpZipCodeFinder()
+            }
+            
+            zipCodeFinder?.findZipCode(forCoordinate: mapView.centerCoordinate,
                 onSuccess: setNewZipCode, onError: displayError)
         }
         
@@ -216,6 +254,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         
         if item.tag == Mode.Locate.toRaw() {
             findMe()
+        }
+    }
+    
+    // Alert view delegate methods
+    func alertViewShouldEnableFirstOtherButton(alertView: UIAlertView!) -> Bool {
+        return !alertView.textFieldAtIndex(0).text.isEmpty
+    }
+    
+    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            let username = alertView.textFieldAtIndex(0).text
+            if !username.isEmpty {
+                zipCodeFinder = ZipCodeFinder(username)
+                NSUserDefaults.standardUserDefaults().setValue(username, forKey:"username_preference")
+            }
         }
     }
 }

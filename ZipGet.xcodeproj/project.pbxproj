@@ -16,6 +16,7 @@
 		497085D0195CC288001B88B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497085CF195CC288001B88B4 /* MapKit.framework */; };
 		497085D2195CDF53001B88B4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497085D1195CDF53001B88B4 /* CoreLocation.framework */; };
 		497085D4195DB631001B88B4 /* ZipCodeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085D3195DB631001B88B4 /* ZipCodeFinder.swift */; };
+		49E588B119743A0200B53DFD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49E588B019743A0200B53DFD /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		497085CF195CC288001B88B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		497085D1195CDF53001B88B4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		497085D3195DB631001B88B4 /* ZipCodeFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeFinder.swift; sourceTree = "<group>"; };
+		49E588B019743A0200B53DFD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		49E5968E19622B0200E1757F /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge.h; sourceTree = "<group>"; };
 		9ADEB5F81AB942D8AD62C4DD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 		497085A4195CBBCE001B88B4 = {
 			isa = PBXGroup;
 			children = (
+				49E588B019743A0200B53DFD /* Settings.bundle */,
 				497085D1195CDF53001B88B4 /* CoreLocation.framework */,
 				497085CF195CC288001B88B4 /* MapKit.framework */,
 				497085AF195CBBCE001B88B4 /* ZipGet */,
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				497085B8195CBBCE001B88B4 /* Main.storyboard in Resources */,
+				49E588B119743A0200B53DFD /* Settings.bundle in Resources */,
 				497085BA195CBBCE001B88B4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

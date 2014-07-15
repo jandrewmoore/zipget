@@ -6,48 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZipGet/ZipCodeFinder.swift"
-            timestampString = "426023011.447501"
+            filePath = "ZipGet/ViewController.swift"
+            timestampString = "427137073.793019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "findZipCode(forCoordinate:onSuccess:onError:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZipGet/ZipCodeFinder.swift"
-            timestampString = "426023011.447501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "findZipCode(forCoordinate:onSuccess:onError:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZipGet/ZipCodeFinder.swift"
-            timestampString = "426023011.447501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "findZipCode(forCoordinate:onSuccess:onError:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "findMe()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,167 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZipGet/ViewController.swift"
-            timestampString = "426447427.668817"
+            timestampString = "427137192.861503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "setUpZipCodeFinder()"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZipGet/ViewController.swift"
-            timestampString = "426447427.668817"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "mapView(_:regionDidChangeAnimated:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZipGet/ZipCodeFinder.swift"
-            timestampString = "426107983.04744"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "findZipCode(forCityName:onSuccess:onError:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ZipGet.ZipCodeFinder.(findZipCode (ZipGet.ZipCodeFinder) -&gt; (forCityName : Swift.String, onSuccess : (Swift.String) -&gt; (), onError : (Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "ZipGet"
-                  urlString = "file:///Users/andrew/Documents/Dev/ZipGet/ZipGet/ZipCodeFinder.swift"
-                  timestampString = "426095011.919243"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "1740">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ZipGet.ZipCodeFinder.(findZipCode (ZipGet.ZipCodeFinder) -&gt; (forCityName : Swift.String, onSuccess : (Swift.String) -&gt; (), onError : (Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "ZipGet"
-                  urlString = "file:///Users/andrew/Documents/Dev/ZipGet/ZipGet/ZipCodeFinder.swift"
-                  timestampString = "426095011.919549"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "5524">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZipGet/ZipCodeFinder.swift"
-            timestampString = "426107983.04744"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "findZipCode(forCityName:onSuccess:onError:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ZipGet.ZipCodeFinder.(findZipCode (ZipGet.ZipCodeFinder) -&gt; (forCityName : Swift.String, onSuccess : (Swift.String) -&gt; (), onError : (Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "ZipGet"
-                  urlString = "file:///Users/andrew/Documents/Dev/ZipGet/ZipGet/ZipCodeFinder.swift"
-                  timestampString = "426095011.942193"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ZipGet.ZipCodeFinder.(findZipCode (ZipGet.ZipCodeFinder) -&gt; (forCityName : Swift.String, onSuccess : (Swift.String) -&gt; (), onError : (Swift.Optional&lt;ObjectiveC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "ZipGet"
-                  urlString = "file:///Users/andrew/Documents/Dev/ZipGet/ZipGet/ZipCodeFinder.swift"
-                  timestampString = "426095011.942542"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "168">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZipGet/ViewController.swift"
-            timestampString = "426447427.668817"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "setNewZipCode(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ZipGet.ViewController.setNewZipCode (ZipGet.ViewController)(Swift.String) -&gt; ()"
-                  moduleName = "ZipGet"
-                  urlString = "file:///Users/andrew/Documents/Dev/ZipGet/ZipGet/ViewController.swift"
-                  timestampString = "426094737.834677"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "1112">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ZipGet.ViewController.setNewZipCode (ZipGet.ViewController)(Swift.String) -&gt; ()"
-                  moduleName = "ZipGet"
-                  urlString = "file:///Users/andrew/Documents/Dev/ZipGet/ZipGet/ViewController.swift"
-                  timestampString = "426094737.834943"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "1452">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

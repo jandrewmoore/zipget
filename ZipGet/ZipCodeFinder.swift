@@ -12,11 +12,12 @@ import MapKit
 class ZipCodeFinder {
     var latestCoordinates: CLLocationCoordinate2D?
     
-    let username = "jamoore"
+    var username: String!
     let manager: AFHTTPRequestOperationManager
     
-    init() {
+    init(_ username: String) {
         self.manager = AFHTTPRequestOperationManager()
+        self.username = username
     }
         
     func findZipCode(forCoordinate coord: CLLocationCoordinate2D, onSuccess: (String) -> Void, onError: (String?) -> Void) {
