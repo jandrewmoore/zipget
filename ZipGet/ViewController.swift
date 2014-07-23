@@ -10,21 +10,21 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, MKMapViewDelegate, UITabBarDelegate, UIAlertViewDelegate {
+class ViewController: UIViewController {
                             
-    @IBOutlet var searchField: UITextField
-    @IBOutlet var zipCode: UILabel
-    @IBOutlet var mapView: MKMapView
-    @IBOutlet var message: UILabel
-    @IBOutlet var exploreHint: UILabel
-    @IBOutlet var tabBar: UITabBar
+    @IBOutlet var searchField: UITextField!
+    @IBOutlet var zipCode: UILabel!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var message: UILabel!
+    @IBOutlet var exploreHint: UILabel!
+    @IBOutlet var tabBar: UITabBar!
     
     enum Mode: Int {
         case Explore = 0
         case Search = 1
         case Locate = 2
     }
-        
+    
     var zipCodeFinder: ZipCodeFinder?
     
     var locationManager: CLLocationManager
@@ -55,11 +55,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
         
         registerForKeyboardNotifications()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "appDidBecomeActive:",
+            name: UIApplicationDidBecomeActiveNotification,
+            object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appWillResignActive:", name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "appWillResignActive:",
+            name: UIApplicationWillResignActiveNotification,
+            object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDefaultsDidChange:", name: NSUserDefaultsDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "userDefaultsDidChange:",
+            name: NSUserDefaultsDidChangeNotification,
+            object: nil)
     }
     
     func appDidBecomeActive(notification: NSNotification) {
@@ -122,7 +131,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
                 let period = PRTweenPeriod.periodWithStartValue(CGFloat(start!), endValue: CGFloat(end!), duration: 0.5) as PRTweenPeriod
                 
                 PRTween.sharedInstance().addTweenPeriod(period, updateBlock: { (p: PRTweenPeriod!) in
+                    if p.tweenedValue < 10000 {
+                        self.zipCode.text = "0\(Int(p.tweenedValue))"
+                    } else {
                         self.zipCode.text = "\(Int(p.tweenedValue))"
+                    }
                     }, completionBlock: { self.zipCode.text = newZipCode })
             } else {
                 zipCode.text = newZipCode
@@ -156,14 +169,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     }
     
     func registerForKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardWillShow:",
+            name: UIKeyboardWillShowNotification,
+            object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardWillHide:",
+            name: UIKeyboardWillHideNotification,
+            object: nil)
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        let info = notification.userInfo
-        let kbSize = info[UIKeyboardFrameBeginUserInfoKey].CGRectValue()
+        let info = notification.userInfo as [String:AnyObject]
+        let kbSize = info[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue()
         let oldFrame = searchField.frame
         let newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y - kbSize.height + 49, oldFrame.width, oldFrame.height)
         
@@ -189,8 +208,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             usernameAlert.title = "Who are you?"
             usernameAlert.message = "The GeoNames service ZipGet uses requires a username. Get one at geonames.org."
             usernameAlert.delegate = self
-            usernameAlert.addButtonWithTitle("Cancel")
-            usernameAlert.addButtonWithTitle("OK")
+            usernameAlert.addButtonWithTitle("Forget it")
+            usernameAlert.addButtonWithTitle("Sign in")
+            usernameAlert.addButtonWithTitle("Go register")
             usernameAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
             
             usernameAlert.show()
@@ -198,9 +218,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             zipCodeFinder = ZipCodeFinder(newUsername)
         }
     }
-    
-    // Location manager delegate methods
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]) {
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]) {
         let possibleNew = locations[locations.endIndex - 1] as CLLocation
         let newDate = possibleNew.timestamp
         
@@ -216,8 +237,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError) {
         message.text = error.localizedDescription
     }
-    
-    // Text field delegate methods
+}
+
+extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         return false
@@ -231,8 +253,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             zipCodeFinder?.findZipCode(forCityName: textField.text, onSuccess: setNewZipCode, onError: displayError)
         }
     }
-    
-    // Map view delegate methods
+}
+
+extension ViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
         if mode == .Explore {
             if !zipCodeFinder {
@@ -247,8 +270,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             changeMode(.Explore)
         }
     }
-    
-    // Tab bar delegate methods
+}
+
+extension ViewController: UITabBarDelegate {
     func tabBar(tabBar: UITabBar!, didSelectItem item: UITabBarItem!) {
         changeMode(Mode.fromRaw(item.tag)!)
         
@@ -256,8 +280,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
             findMe()
         }
     }
-    
-    // Alert view delegate methods
+}
+
+extension ViewController: UIAlertViewDelegate {
     func alertViewShouldEnableFirstOtherButton(alertView: UIAlertView!) -> Bool {
         return !alertView.textFieldAtIndex(0).text.isEmpty
     }
@@ -270,5 +295,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITextFieldDe
                 NSUserDefaults.standardUserDefaults().setValue(username, forKey:"username_preference")
             }
         }
+        
+        if buttonIndex == 2 {
+            // Go to safari
+            let url = NSURL(string: "http://www.geonames.org/login")
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
     }
 }

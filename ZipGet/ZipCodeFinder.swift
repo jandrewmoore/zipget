@@ -28,9 +28,9 @@ class ZipCodeFinder {
         manager.GET(url,
             parameters: nil,
             success: { (op: AFHTTPRequestOperation!, response: AnyObject!) in
-                let json = response as Dictionary<String, AnyObject>
+                let json = response as [String:AnyObject]
                 let postalCodes: AnyObject? = json["postalCodes"]
-                let postalCodesArr = postalCodes as Array<Dictionary<String, AnyObject>>
+                let postalCodesArr = postalCodes as [[String:AnyObject]]
                 if !postalCodesArr.isEmpty {
                     let first = postalCodesArr[0]
                     if let res: AnyObject = first["postalCode"] {
@@ -39,6 +39,7 @@ class ZipCodeFinder {
                     }
                 }
                 
+                NSLog("No postal code at \(coord.latitude), \(coord.longitude)")
                 onError("Couldn't find a postal code here 😱")
             }, failure: { (op: AFHTTPRequestOperation!, error: NSError!) in
                 onError(error.localizedDescription)
@@ -48,7 +49,7 @@ class ZipCodeFinder {
     func findZipCode(forCityName city: String, onSuccess: (String) -> Void, onError: (String?) -> Void) {
         var url = "http://api.geonames.org/searchJSON"
         
-        var parameters: Dictionary<String, AnyObject> = [
+        var parameters: [String:AnyObject] = [
             "username": username,
             "maxRows": 1
         ]
@@ -64,9 +65,9 @@ class ZipCodeFinder {
         manager.GET(url,
             parameters: parameters,
             success: { (op: AFHTTPRequestOperation!, response: AnyObject!) in
-                let json = response as Dictionary<String, AnyObject>
+                let json = response as [String:AnyObject]
                 let results: AnyObject? = json["geonames"]
-                let resultsArray = results as Array<Dictionary<String, AnyObject>>
+                let resultsArray = results as [[String:AnyObject]]
                 if !resultsArray.isEmpty {
                     let first = resultsArray[0]
                     var lat: AnyObject? = first["lat"]
