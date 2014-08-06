@@ -202,15 +202,15 @@ class ViewController: UIViewController {
     }
     
     func setUpZipCodeFinder() {
-        let newUsername = NSUserDefaults.standardUserDefaults().stringForKey("username_preference")
+        let newUsername = "jamoore" //NSUserDefaults.standardUserDefaults().stringForKey("username_preference")
         if newUsername.isEmpty {
             let usernameAlert = UIAlertView()
             usernameAlert.title = "Who are you?"
             usernameAlert.message = "The GeoNames service ZipGet uses requires a username. Get one at geonames.org."
             usernameAlert.delegate = self
-            usernameAlert.addButtonWithTitle("Forget it")
             usernameAlert.addButtonWithTitle("Sign in")
             usernameAlert.addButtonWithTitle("Go register")
+            usernameAlert.addButtonWithTitle("Forget it")
             usernameAlert.alertViewStyle = UIAlertViewStyle.PlainTextInput
             
             usernameAlert.show()
@@ -288,7 +288,7 @@ extension ViewController: UIAlertViewDelegate {
     }
     
     func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
+        if buttonIndex == 0 {
             let username = alertView.textFieldAtIndex(0).text
             if !username.isEmpty {
                 zipCodeFinder = ZipCodeFinder(username)
@@ -296,7 +296,7 @@ extension ViewController: UIAlertViewDelegate {
             }
         }
         
-        if buttonIndex == 2 {
+        if buttonIndex == 1 {
             // Go to safari
             let url = NSURL(string: "http://www.geonames.org/login")
             UIApplication.sharedApplication().openURL(url)

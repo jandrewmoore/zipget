@@ -24,7 +24,7 @@ class ZipCodeFinder {
         let url = "http://api.geonames.org/findNearbyPostalCodesJSON" +
             "?lat=\(coord.latitude)&lng=\(coord.longitude)&username=\(username)&maxRows=1"
         latestCoordinates = coord
-        
+
         manager.GET(url,
             parameters: nil,
             success: { (op: AFHTTPRequestOperation!, response: AnyObject!) in
