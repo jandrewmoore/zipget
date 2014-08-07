@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1635D20E75344B518E78D0EB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3172D73F9D154AB381F6E59F /* libPods.a */; };
 		4917DB9319917B9D005CC899 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917DB9219917B9D005CC899 /* Alamofire.swift */; };
+		4941A1C31992E93500A42790 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941A1C21992E93500A42790 /* SwiftyJSON.swift */; };
 		497085B3195CBBCE001B88B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085B2195CBBCE001B88B4 /* AppDelegate.swift */; };
 		497085B5195CBBCE001B88B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497085B4195CBBCE001B88B4 /* ViewController.swift */; };
 		497085B8195CBBCE001B88B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 497085B6195CBBCE001B88B4 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		3172D73F9D154AB381F6E59F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4917DB9219917B9D005CC899 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		4941A1C21992E93500A42790 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		497085AD195CBBCE001B88B4 /* ZipGet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZipGet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		497085B1195CBBCE001B88B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497085B2195CBBCE001B88B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				497085B0195CBBCE001B88B4 /* Supporting Files */,
 				497085D3195DB631001B88B4 /* ZipCodeFinder.swift */,
 				4917DB9219917B9D005CC899 /* Alamofire.swift */,
+				4941A1C21992E93500A42790 /* SwiftyJSON.swift */,
 			);
 			path = ZipGet;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				497085D4195DB631001B88B4 /* ZipCodeFinder.swift in Sources */,
 				497085B5195CBBCE001B88B4 /* ViewController.swift in Sources */,
 				4917DB9319917B9D005CC899 /* Alamofire.swift in Sources */,
+				4941A1C31992E93500A42790 /* SwiftyJSON.swift in Sources */,
 				497085B3195CBBCE001B88B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
