@@ -13,13 +13,11 @@ class ZipCodeFinder {
     var latestCoordinates: CLLocationCoordinate2D?
     
     var username: String!
-    let manager: AFHTTPRequestOperationManager
     
     init(_ username: String) {
-        self.manager = AFHTTPRequestOperationManager()
         self.username = username
     }
-        
+
     func findZipCode(forCoordinate coord: CLLocationCoordinate2D, onSuccess: (String) -> Void, onError: (String?) -> Void) {
         let url = "http://api.geonames.org/findNearbyPostalCodesJSON"
         let parameters: [String: AnyObject] = [
@@ -28,6 +26,7 @@ class ZipCodeFinder {
             "username": username,
             "maxRows": 1
         ]
+
         latestCoordinates = coord
 
         Alamofire.request(.GET, url, parameters: parameters).response { _, _, data, _ in
@@ -46,7 +45,6 @@ class ZipCodeFinder {
     
     func findZipCode(forCityName city: String, onSuccess: (String) -> Void, onError: (String?) -> Void) {
         var url = "http://api.geonames.org/searchJSON"
-        
         var parameters: [String: AnyObject] = [
             "username": username,
             "maxRows": 1
